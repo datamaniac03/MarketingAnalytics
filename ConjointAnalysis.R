@@ -15,9 +15,12 @@ linreg1 <- lm(RPreference ~ .-1, data = pref_grid[,-5])
 linreg2 <- lm(RPreference ~ ., data = pref_grid[,-5])
 
 #part worths
-pw1 <- 10*abs(linreg2$coefficients)
-pw2 <- 5*abs(linreg2$coefficients)
-pw <- pw1-pw2
+pw1 <- 10*abs(linreg2$coefficients[5])
+pw2 <- 5*abs(linreg2$coefficients[5])
+price_pw <- pw1-pw2
 
+partworth <- linreg2$coefficients
+partworth$Price <- pw
+partworth <- as.data.frame(partworth)
 #Importance
-importance <- pw/sum(pw)
+importance <- partworth/sum(partworth)
