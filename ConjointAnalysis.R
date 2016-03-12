@@ -1,5 +1,6 @@
 #Scott Jacobs
 #Marketing Notes
+#Kelly comment for first push
 
 #create dataframe
 pref_grid <- expand.grid(Pulp = c(0,1), Organic = c(0,1), Brand = c(0,1), Price = c(5,10)) #create df fr all combos
