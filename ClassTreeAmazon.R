@@ -1,5 +1,6 @@
 Amazon <- read.csv("~/Data_Science/MarketingAnalytics/Amazon.csv", comment.char="#")
 library(caret)
+#Create test and train data
 smp_size <- floor(0.7*nrow(Amazon))
 set.seed(143)
 train_ind <- sample(seq_len(nrow(Amazon)), size = smp_size)
@@ -9,7 +10,6 @@ test <- Amazon[-train_ind,]
 library(rpart)
 amazon.rt <- rpart(Customer.Segment.n~Product.Container.n+Ship.Mode.n+Order.Priority.n+Product.Category.n+Product.Sub.Category.n+Province+Region+PRIN1+PRIN2+PRIN3+PRIN4, data=train, method="class", control=rpart.control(minsplit=10, cp=.00001) )
 printcp(amazon.rt)
-summary(amazon.rt, cp=)
 pred <- predict(amazon.rt, type="class")
 table(pred, train$Customer.Segment.n)
 library(rpart.plot)
